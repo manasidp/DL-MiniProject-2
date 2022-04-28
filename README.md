@@ -3,7 +3,7 @@ The two videos considered are data_src and data_dst as included here.
 Faces have already been extracted and aligned and stored in folders "a" and "b" for the data_src and data_dst videos respectively.
 The model has been trained over 100000 epochs for recognizing these faces.
 
-#to generate phtos with swapped faces we use writes_images.py
+#to generate ph0tos with swapped faces we use writes_images.py
 
 python3 writes_images.py
 
