@@ -1,52 +1,17 @@
-# Deep Fakes PyTorch
 
-### Installation
+The two videos considered are data_src and data_dst as included here.
+Faces have already been extracted and aligned and stored in folders "a" and "b" for the data_src and data_dst videos respectively.
+The model has been trained over 100000 epochs for recognizing these faces.
 
-You will need to install cmake first (required for dlib, which is used for face alignment).
-You will also need to download shape_predictor_68_face_landmarks.dat for dlib, put it in the main folder
+#to generate phtos with swapped faces we use writes_images.py
 
-```shell
-conda create --name torchfakes
-activate torchfakes
-git clone https://github.com/IanSullivan/DeepFakeTorch.git
-cd DeepFakeTorch
-pip install -r requirements.txt
-```
+python3 writes_images.py
 
-### How it works
-youtube video
-https://www.youtube.com/watch?v=XqluthtTenI 
+#the images generated are stored in saved_images folder
 
-paper written by deepfacelab
-https://arxiv.org/abs/2005.05535
+#to generate swapped videos we use video_writer.py program
+#this part still gives us error which is to be resolved
 
-### Extract Faces
-```shell
-python face_detect.py -video_src data_src.mp4 -out_name a
-python face_detect.py -video_src data_dst.mp4 -out_name b
-```
+python3 video_writer.py -original_video [video name] -model_location saved_models/model.pt -out_name myswappedvideo -decoder [either 'a' or 'b']
 
----
 
-### Train Model
-```shell
-python train.py -face_a_dir a -face_b_dir b -n_steps 100000
-```
-
----
-
-### Write Video
-```shell
-python video_writer.py -original_video [video name] -model_location saved_models/model.pt -out_name myswappedvideo -decoder [either 'a' or 'b']
-```
-
----
-
-## Results
-Training after 10,000 steps <br>
-<img src="images/swapped.gif"> <br>
-<img src="images/b_to_a.gif">
-
-## TO DO LIST (if possible)
-- [ ] Smooth images on swapped video
-- [ ] Add colour correction to swapped faces
